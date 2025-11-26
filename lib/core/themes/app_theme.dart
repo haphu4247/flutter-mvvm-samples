@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/core/themes/color/theme_colors_dark.dart';
-import 'package:flutter_test_dev/core/themes/color/theme_colors_universal.dart';
-import 'package:flutter_test_dev/core/themes/color/theme_colors_orange.dart';
+import 'package:flutter_mvvm_samples/core/themes/color/theme_colors_dark.dart';
+import 'package:flutter_mvvm_samples/core/themes/color/theme_colors_universal.dart';
+import 'package:flutter_mvvm_samples/core/themes/color/theme_colors_orange.dart';
 import 'color/theme_colors_light.dart';
 import 'base_theme.dart';
 import '../../shared/providers/theme_provider.dart';
@@ -42,9 +42,9 @@ class AppTheme {
 
   /// Get all available theme colors
   static List<BaseTheme> get allThemeColors => [
-    _lightColors,
-    _darkColors,
-    _universalColors,
-    _orangeColors,
-  ];
+        _lightColors,
+        _darkColors,
+        _universalColors,
+        _orangeColors,
+      ];
 }

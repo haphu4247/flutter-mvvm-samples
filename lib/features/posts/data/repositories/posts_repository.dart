@@ -1,6 +1,6 @@
-import 'package:flutter_test_dev/core/network/api_error.dart';
-import 'package:flutter_test_dev/shared/data/models/product_model.dart';
-import 'package:flutter_test_dev/shared/data/services/api/posts_service.dart';
+import 'package:flutter_mvvm_samples/core/network/api_error.dart';
+import 'package:flutter_mvvm_samples/shared/data/models/product_model.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/api/posts_service.dart';
 
 /// Repository for posts data
 class PostsRepository {

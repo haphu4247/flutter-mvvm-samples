@@ -46,7 +46,7 @@ Before running this project, make sure you have the following installed:
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd flutter_test_dev
+cd flutter_mvvm_samples
 ```
 
 ### 2. Install Dependencies

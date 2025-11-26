@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/shared/widgets/lottie_view.dart';
+import 'package:flutter_mvvm_samples/shared/widgets/lottie_view.dart';
 
 class LoadingView extends StatelessWidget {
   const LoadingView({

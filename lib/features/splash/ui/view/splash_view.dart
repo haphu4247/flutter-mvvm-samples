@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/features/splash/ui/viewmodel/splash_viewmodel.dart';
-import 'package:flutter_test_dev/mvvm/view/base_view.dart';
-import 'package:flutter_test_dev/core/translations/generated/app_localizations.dart';
+import 'package:flutter_mvvm_samples/features/splash/ui/viewmodel/splash_viewmodel.dart';
+import 'package:flutter_mvvm_samples/mvvm/view/base_view.dart';
+import 'package:flutter_mvvm_samples/core/translations/generated/app_localizations.dart';
 
 /// Splash View - UI Layer
 /// Responsibilities: Render splash UI, navigate based on auth state

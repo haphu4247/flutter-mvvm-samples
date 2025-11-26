@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_test_dev/core/env/base_env_model.dart';
+import 'package:flutter_mvvm_samples/core/env/base_env_model.dart';
 
 import 'interceptor/refresh_token_interceptor.dart';
 

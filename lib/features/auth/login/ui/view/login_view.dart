@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/features/auth/login/ui/viewmodel/login_viewmodel.dart';
-import 'package:flutter_test_dev/mvvm/view/base_view.dart';
-import 'package:flutter_test_dev/core/translations/generated/app_localizations.dart';
-import 'package:flutter_test_dev/core/router/app_route_path.dart';
+import 'package:flutter_mvvm_samples/features/auth/login/ui/viewmodel/login_viewmodel.dart';
+import 'package:flutter_mvvm_samples/mvvm/view/base_view.dart';
+import 'package:flutter_mvvm_samples/core/translations/generated/app_localizations.dart';
+import 'package:flutter_mvvm_samples/core/router/app_route_path.dart';
 
 /// Login View - UI Layer
 /// Responsibilities: Render UI only, handle user gestures, call ViewModel commands

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_test_dev/core/env/base_env_model.dart';
-import 'package:flutter_test_dev/core/network/api_error.dart';
+import 'package:flutter_mvvm_samples/core/env/base_env_model.dart';
+import 'package:flutter_mvvm_samples/core/network/api_error.dart';
 
 import 'dio_client.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/mvvm/view/base_view.dart';
-import 'package:flutter_test_dev/core/translations/generated/app_localizations.dart';
-import 'package:flutter_test_dev/features/posts/ui/viewmodel/posts_view_model.dart';
+import 'package:flutter_mvvm_samples/mvvm/view/base_view.dart';
+import 'package:flutter_mvvm_samples/core/translations/generated/app_localizations.dart';
+import 'package:flutter_mvvm_samples/features/posts/ui/viewmodel/posts_view_model.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 /// Posts View - UI Layer

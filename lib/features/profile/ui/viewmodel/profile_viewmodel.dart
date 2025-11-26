@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/features/profile/data/repositories/profile_repository.dart';
-import 'package:flutter_test_dev/shared/data/models/login_response.dart';
-import 'package:flutter_test_dev/mvvm/viewmodel/base_viewmodel.dart';
+import 'package:flutter_mvvm_samples/features/profile/data/repositories/profile_repository.dart';
+import 'package:flutter_mvvm_samples/shared/data/models/login_response.dart';
+import 'package:flutter_mvvm_samples/mvvm/viewmodel/base_viewmodel.dart';
 
 /// ViewModel for profile screen
 class ProfileViewModel extends BaseViewModel {
@@ -27,6 +27,7 @@ class ProfileViewModel extends BaseViewModel {
     this.onRefresh = onRefresh;
     loadProfile();
   }
+
   /// Command: Load profile
   Future<void> loadProfile() async {
     if (_isLoading) return;

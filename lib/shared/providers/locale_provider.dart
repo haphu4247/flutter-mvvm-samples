@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/shared/data/services/local/shared_preferences_service.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/local/shared_preferences_service.dart';
 
 class LocaleNotifier extends ChangeNotifier {
   LocaleNotifier(this._sharedPreferencesService) : super() {

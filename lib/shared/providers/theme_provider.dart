@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/shared/data/services/local/shared_preferences_service.dart';
-import 'package:flutter_test_dev/core/themes/app_theme.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/local/shared_preferences_service.dart';
+import 'package:flutter_mvvm_samples/core/themes/app_theme.dart';
 
 /// Theme mode enumeration
 enum AppThemeMode {
@@ -27,8 +27,8 @@ class ThemeNotifier extends ChangeNotifier {
   /// Load the saved theme from storage
   Future<void> _loadSavedTheme() async {
     try {
-     
-      final savedTheme = await _sharedPreferencesService.getString(PrefKey.theme);
+      final savedTheme =
+          await _sharedPreferencesService.getString(PrefKey.theme);
 
       if (savedTheme != null && savedTheme.isNotEmpty) {
         final themeMode = AppThemeMode.values.firstWhere(
@@ -63,7 +63,6 @@ class ThemeNotifier extends ChangeNotifier {
     _state = AppThemeMode.universal;
     notifyListeners();
     try {
-
       await _sharedPreferencesService.remove(PrefKey.theme);
     } catch (e) {
       debugPrint('Error clearing theme: $e');

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/features/posts/data/repositories/posts_repository.dart';
-import 'package:flutter_test_dev/shared/data/models/product_model.dart';
-import 'package:flutter_test_dev/mvvm/viewmodel/base_viewmodel.dart';
+import 'package:flutter_mvvm_samples/features/posts/data/repositories/posts_repository.dart';
+import 'package:flutter_mvvm_samples/shared/data/models/product_model.dart';
+import 'package:flutter_mvvm_samples/mvvm/viewmodel/base_viewmodel.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 /// ViewModel for posts screen
@@ -9,7 +9,7 @@ class PostsViewModel extends BaseViewModel {
   PostsViewModel(this._postsRepository);
 
   final PostsRepository _postsRepository;
-  
+
   void Function()? onRefresh;
 
   final RefreshController refreshController =

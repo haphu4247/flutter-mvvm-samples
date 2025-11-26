@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:flutter_test_dev/core/network/api_error.dart';
-import 'package:flutter_test_dev/shared/data/models/login_response.dart';
-import 'package:flutter_test_dev/shared/data/services/api/user_service.dart';
-import 'package:flutter_test_dev/shared/data/services/local/shared_preferences_service.dart';
+import 'package:flutter_mvvm_samples/core/network/api_error.dart';
+import 'package:flutter_mvvm_samples/shared/data/models/login_response.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/api/user_service.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/local/shared_preferences_service.dart';
 
 /// Repository for user profile data
 /// Handles: caching, error handling, retry logic
@@ -11,10 +11,12 @@ class ProfileRepository {
 
   final UserService _userService;
   final SharedPreferencesService _sharedPreferencesService;
+
   /// Get cached profile if available
   Future<LoginResponse?> getCachedProfile() async {
     try {
-      final cachedJson = await _sharedPreferencesService.getString(PrefKey.profileJson);
+      final cachedJson =
+          await _sharedPreferencesService.getString(PrefKey.profileJson);
 
       if (cachedJson == null || cachedJson.isEmpty) {
         return null;
@@ -33,7 +35,8 @@ class ProfileRepository {
     final result = await _userService.getProfile();
 
     if (result.isFailure) {
-      throw ApiError(message: result.error?.message ?? 'Failed to fetch profile');
+      throw ApiError(
+          message: result.error?.message ?? 'Failed to fetch profile');
     }
 
     final profile = result.data;
@@ -50,7 +53,8 @@ class ProfileRepository {
   Future<void> cacheProfile(LoginResponse profile) async {
     try {
       final profileJson = json.encode(profile.toJson());
-      await _sharedPreferencesService.setString(PrefKey.profileJson, profileJson);
+      await _sharedPreferencesService.setString(
+          PrefKey.profileJson, profileJson);
     } catch (e) {
       // Cache failure is not critical
     }

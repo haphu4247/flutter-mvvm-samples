@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_test_dev/core/translations/generated/app_localizations.dart';
-import 'package:flutter_test_dev/shared/providers/locale_provider.dart';
+import 'package:flutter_mvvm_samples/core/translations/generated/app_localizations.dart';
+import 'package:flutter_mvvm_samples/shared/providers/locale_provider.dart';
 
 /// Widget for selecting language
 class LanguageSelectorWidget extends StatelessWidget {

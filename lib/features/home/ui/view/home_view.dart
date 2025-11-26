@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/features/home/ui/viewmodel/home_viewmodel.dart';
-import 'package:flutter_test_dev/features/posts/data/repositories/posts_repository.dart';
-import 'package:flutter_test_dev/features/posts/ui/viewmodel/posts_view_model.dart';
-import 'package:flutter_test_dev/core/translations/generated/app_localizations.dart';
-import 'package:flutter_test_dev/features/posts/ui/view/posts_view.dart';
-import 'package:flutter_test_dev/features/profile/data/repositories/profile_repository.dart';
-import 'package:flutter_test_dev/features/profile/ui/viewmodel/profile_viewmodel.dart';
-import 'package:flutter_test_dev/features/profile/ui/view/profile_icon_view.dart';
-import 'package:flutter_test_dev/mvvm/view/base_view.dart';
+import 'package:flutter_mvvm_samples/features/home/ui/viewmodel/home_viewmodel.dart';
+import 'package:flutter_mvvm_samples/features/posts/data/repositories/posts_repository.dart';
+import 'package:flutter_mvvm_samples/features/posts/ui/viewmodel/posts_view_model.dart';
+import 'package:flutter_mvvm_samples/core/translations/generated/app_localizations.dart';
+import 'package:flutter_mvvm_samples/features/posts/ui/view/posts_view.dart';
+import 'package:flutter_mvvm_samples/features/profile/data/repositories/profile_repository.dart';
+import 'package:flutter_mvvm_samples/features/profile/ui/viewmodel/profile_viewmodel.dart';
+import 'package:flutter_mvvm_samples/features/profile/ui/view/profile_icon_view.dart';
+import 'package:flutter_mvvm_samples/mvvm/view/base_view.dart';
 import 'package:provider/provider.dart';
 
 /// Home View - UI Layer

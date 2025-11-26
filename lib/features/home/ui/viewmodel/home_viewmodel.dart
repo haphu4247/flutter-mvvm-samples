@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/mvvm/viewmodel/base_viewmodel.dart';
+import 'package:flutter_mvvm_samples/mvvm/viewmodel/base_viewmodel.dart';
 
 class HomeViewModel extends BaseViewModel {
   HomeViewModel();

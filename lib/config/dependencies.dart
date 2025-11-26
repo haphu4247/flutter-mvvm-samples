@@ -1,16 +1,16 @@
-import 'package:flutter_test_dev/core/env/base_env_model.dart';
-import 'package:flutter_test_dev/features/posts/data/repositories/posts_repository.dart';
-import 'package:flutter_test_dev/shared/providers/locale_provider.dart';
-import 'package:flutter_test_dev/shared/providers/network_provider.dart';
-import 'package:flutter_test_dev/shared/providers/theme_provider.dart';
-import 'package:flutter_test_dev/shared/data/repositories/auth_repository.dart';
+import 'package:flutter_mvvm_samples/core/env/base_env_model.dart';
+import 'package:flutter_mvvm_samples/features/posts/data/repositories/posts_repository.dart';
+import 'package:flutter_mvvm_samples/shared/providers/locale_provider.dart';
+import 'package:flutter_mvvm_samples/shared/providers/network_provider.dart';
+import 'package:flutter_mvvm_samples/shared/providers/theme_provider.dart';
+import 'package:flutter_mvvm_samples/shared/data/repositories/auth_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:flutter_test_dev/features/profile/data/repositories/profile_repository.dart';
-import 'package:flutter_test_dev/shared/data/services/local/shared_preferences_service.dart';
-import 'package:flutter_test_dev/shared/data/services/api/auth_service.dart';
-import 'package:flutter_test_dev/shared/data/services/api/posts_service.dart';
-import 'package:flutter_test_dev/shared/data/services/api/user_service.dart';
+import 'package:flutter_mvvm_samples/features/profile/data/repositories/profile_repository.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/local/shared_preferences_service.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/api/auth_service.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/api/posts_service.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/api/user_service.dart';
 
 List<SingleChildWidget> multipleProviders(BaseEnvModel env) {
   // Create services

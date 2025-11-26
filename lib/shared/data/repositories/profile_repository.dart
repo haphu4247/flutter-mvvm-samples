@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:flutter_test_dev/core/network/api_error.dart';
-import 'package:flutter_test_dev/shared/data/models/login_response.dart';
-import 'package:flutter_test_dev/shared/data/services/api/user_service.dart';
-import 'package:flutter_test_dev/shared/data/services/local/shared_preferences_service.dart';
+import 'package:flutter_mvvm_samples/core/network/api_error.dart';
+import 'package:flutter_mvvm_samples/shared/data/models/login_response.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/api/user_service.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/local/shared_preferences_service.dart';
 
 /// Repository for user profile data
 /// Handles: caching, error handling, retry logic

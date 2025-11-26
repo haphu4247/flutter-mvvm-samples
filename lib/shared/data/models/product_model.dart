@@ -1,4 +1,4 @@
-import 'package:flutter_test_dev/mvvm/data/models/base_model.dart';
+import 'package:flutter_mvvm_samples/mvvm/data/models/base_model.dart';
 
 class PostModel extends BaseModel {
   final String? id;

@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_test_dev/core/network/base_api.dart';
-import 'package:flutter_test_dev/shared/data/models/product_model.dart';
+import 'package:flutter_mvvm_samples/core/network/base_api.dart';
+import 'package:flutter_mvvm_samples/shared/data/models/product_model.dart';
 
 class PostsService extends BaseApiClient {
-
   PostsService({required super.env});
-  
+
   Future<ApiResult<List<PostModel>>> fetchPosts(
       {required int page, required int limit}) async {
     // For a list response

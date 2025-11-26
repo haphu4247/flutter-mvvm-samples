@@ -1,4 +1,4 @@
-import 'package:flutter_test_dev/core/env/env_impl/env_prod.dart';
+import 'package:flutter_mvvm_samples/core/env/env_impl/env_prod.dart';
 
 import 'base_main.dart';
 

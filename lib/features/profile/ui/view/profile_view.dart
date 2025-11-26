@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/features/profile/ui/viewmodel/profile_viewmodel.dart';
-import 'package:flutter_test_dev/core/translations/generated/app_localizations.dart';
-import 'package:flutter_test_dev/core/router/app_route_path.dart';
-import 'package:flutter_test_dev/mvvm/view/base_view.dart';
-import 'package:flutter_test_dev/features/profile/ui/widgets/theme_selector_widget.dart';
-import 'package:flutter_test_dev/features/profile/ui/widgets/language_selector_widget.dart';
+import 'package:flutter_mvvm_samples/features/profile/ui/viewmodel/profile_viewmodel.dart';
+import 'package:flutter_mvvm_samples/core/translations/generated/app_localizations.dart';
+import 'package:flutter_mvvm_samples/core/router/app_route_path.dart';
+import 'package:flutter_mvvm_samples/mvvm/view/base_view.dart';
+import 'package:flutter_mvvm_samples/features/profile/ui/widgets/theme_selector_widget.dart';
+import 'package:flutter_mvvm_samples/features/profile/ui/widgets/language_selector_widget.dart';
 
 /// Profile View - UI Layer
 /// Responsibilities: Render profile data, handle user interactions

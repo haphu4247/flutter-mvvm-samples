@@ -3,10 +3,10 @@ import 'dart:convert';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_test_dev/core/env/base_env_model.dart';
-import 'package:flutter_test_dev/shared/data/models/login_response.dart';
-import 'package:flutter_test_dev/shared/data/services/api/auth_service.dart';
-import 'package:flutter_test_dev/shared/data/services/local/shared_preferences_service.dart';
+import 'package:flutter_mvvm_samples/core/env/base_env_model.dart';
+import 'package:flutter_mvvm_samples/shared/data/models/login_response.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/api/auth_service.dart';
+import 'package:flutter_mvvm_samples/shared/data/services/local/shared_preferences_service.dart';
 
 import '../dio_client.dart';
 

@@ -3,12 +3,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:flutter_test_dev/config/dependencies.dart';
-import 'package:flutter_test_dev/core/env/base_env_model.dart';
-import 'package:flutter_test_dev/core/router/app_router.dart';
-import 'package:flutter_test_dev/shared/widgets/loading_view.dart';
+import 'package:flutter_mvvm_samples/config/dependencies.dart';
+import 'package:flutter_mvvm_samples/core/env/base_env_model.dart';
+import 'package:flutter_mvvm_samples/core/router/app_router.dart';
+import 'package:flutter_mvvm_samples/shared/widgets/loading_view.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_test_dev/core/translations/generated/app_localizations.dart';
+import 'package:flutter_mvvm_samples/core/translations/generated/app_localizations.dart';
 import 'shared/providers/locale_provider.dart';
 import 'shared/providers/theme_provider.dart';
 

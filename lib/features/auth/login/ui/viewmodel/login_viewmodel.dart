@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_dev/shared/data/repositories/auth_repository.dart';
-import 'package:flutter_test_dev/shared/data/models/login_response.dart';
-import 'package:flutter_test_dev/mvvm/viewmodel/base_viewmodel.dart';
+import 'package:flutter_mvvm_samples/shared/data/repositories/auth_repository.dart';
+import 'package:flutter_mvvm_samples/shared/data/models/login_response.dart';
+import 'package:flutter_mvvm_samples/mvvm/viewmodel/base_viewmodel.dart';
 
 /// ViewModel for authentication UI
 /// Responsibilities: Maintain UI state, expose commands, transform data for presentation

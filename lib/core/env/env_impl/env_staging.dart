@@ -1,4 +1,4 @@
-import 'package:flutter_test_dev/core/env/env.dart';
+import 'package:flutter_mvvm_samples/core/env/env.dart';
 
 import 'dart:async';
 
@@ -14,7 +14,7 @@ class EnvStaging extends BaseEnvModel {
   FutureOr initConfig() {
     return Future.value(null);
   }
-  
+
   @override
   String get appIcon => 'app_icons_dashatars_stg.png';
 }
