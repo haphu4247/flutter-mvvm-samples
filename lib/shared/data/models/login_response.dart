@@ -1,4 +1,6 @@
-class LoginResponse {
+import 'package:flutter_test_dev/mvvm/data/models/base_model.dart';
+
+class LoginResponse extends BaseModel {
   const LoginResponse({
     required this.id,
     required this.username,
@@ -23,18 +25,19 @@ class LoginResponse {
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
     return LoginResponse(
-      id: (json['id'] as num?)?.toInt(),
-      username: json['username'] as String?,
-      email: json['email'] as String?,
-      firstName: json['firstName'] as String?,
-      lastName: json['lastName'] as String?,
-      gender: json['gender'] as String?,
-      image: json['image'] as String?,
-      accessToken: json['accessToken'] as String?,
-      refreshToken: json['refreshToken'] as String?,
+      id: BaseModel.parseInt(json['id']),
+      username: BaseModel.parseString(json['username']),
+      email: BaseModel.parseString(json['email']),
+      firstName: BaseModel.parseString(json['firstName']),
+      lastName: BaseModel.parseString(json['lastName']),
+      gender: BaseModel.parseString(json['gender']),
+      image: BaseModel.parseString(json['image']),
+      accessToken: BaseModel.parseString(json['accessToken']),
+      refreshToken: BaseModel.parseString(json['refreshToken']),
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
