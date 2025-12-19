@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_samples/shared/data/services/local/shared_preferences_service.dart';
 import 'package:flutter_mvvm_samples/core/themes/app_theme.dart';
+import 'package:flutter_mvvm_samples/core/utils/log/app_logger.dart';
 
 /// Theme mode enumeration
 enum AppThemeMode {
@@ -22,6 +23,8 @@ class ThemeNotifier extends ChangeNotifier {
   final SharedPreferencesService _sharedPreferencesService;
 
   AppThemeMode _state = AppThemeMode.universal;
+
+  /// Get current theme mode as AppThemeMode
   AppThemeMode get state => _state;
 
   /// Load the saved theme from storage
@@ -39,7 +42,8 @@ class ThemeNotifier extends ChangeNotifier {
       }
     } catch (e) {
       // Handle error silently, use universal theme
-      debugPrint('Error loading saved theme: $e');
+      AppLogger.instance
+          .warning('Error loading saved theme', tag: 'ThemeProvider', error: e);
     }
   }
 
@@ -51,12 +55,10 @@ class ThemeNotifier extends ChangeNotifier {
     try {
       await _sharedPreferencesService.setString(PrefKey.theme, themeMode.name);
     } catch (e) {
-      debugPrint('Error saving theme: $e');
+      AppLogger.instance
+          .warning('Error saving theme', tag: 'ThemeProvider', error: e);
     }
   }
-
-  /// Get current theme mode as AppThemeMode
-  AppThemeMode get currentAppThemeMode => _state;
 
   /// Clear saved theme (reset to universal)
   Future<void> clearTheme() async {
@@ -65,7 +67,8 @@ class ThemeNotifier extends ChangeNotifier {
     try {
       await _sharedPreferencesService.remove(PrefKey.theme);
     } catch (e) {
-      debugPrint('Error clearing theme: $e');
+      AppLogger.instance
+          .warning('Error clearing theme', tag: 'ThemeProvider', error: e);
     }
   }
 }

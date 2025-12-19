@@ -9,7 +9,6 @@ class PostsRepository {
   final PostsService _postsService;
 
   /// Fetch posts with pagination
-  /// Returns List<PostModel> on success
   /// Throws ApiException on failure
   Future<List<PostModel>> fetchPosts({
     required int page,

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_mvvm_samples/core/utils/log/app_logger.dart';
 
 class NetworkNotifier extends ChangeNotifier {
   NetworkNotifier() : super() {
@@ -22,7 +23,8 @@ class NetworkNotifier extends ChangeNotifier {
       final result = await _connectivity.checkConnectivity();
       _updateState(result.first);
     } catch (e) {
-      debugPrint('Error checking initial connectivity: $e');
+      AppLogger.instance.warning('Error checking initial connectivity',
+          tag: 'NetworkProvider', error: e);
     }
 
     // Listen to connectivity changes

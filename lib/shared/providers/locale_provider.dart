@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_samples/shared/data/services/local/shared_preferences_service.dart';
+import 'package:flutter_mvvm_samples/core/utils/log/app_logger.dart';
 
 class LocaleNotifier extends ChangeNotifier {
   LocaleNotifier(this._sharedPreferencesService) : super() {
@@ -25,7 +26,8 @@ class LocaleNotifier extends ChangeNotifier {
       }
     } catch (e) {
       // Handle error silently, use default locale
-      debugPrint('Error loading saved locale: $e');
+      AppLogger.instance.warning('Error loading saved locale',
+          tag: 'LocaleProvider', error: e);
     }
   }
 
@@ -42,7 +44,8 @@ class LocaleNotifier extends ChangeNotifier {
         await _sharedPreferencesService.remove(PrefKey.locale);
       }
     } catch (e) {
-      debugPrint('Error saving locale: $e');
+      AppLogger.instance
+          .warning('Error saving locale', tag: 'LocaleProvider', error: e);
     }
   }
 
@@ -53,7 +56,8 @@ class LocaleNotifier extends ChangeNotifier {
     try {
       await _sharedPreferencesService.remove(PrefKey.locale);
     } catch (e) {
-      debugPrint('Error clearing locale: $e');
+      AppLogger.instance
+          .warning('Error clearing locale', tag: 'LocaleProvider', error: e);
     }
   }
 }

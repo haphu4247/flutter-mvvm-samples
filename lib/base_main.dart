@@ -11,11 +11,18 @@ import 'package:provider/provider.dart';
 import 'package:flutter_mvvm_samples/core/translations/generated/app_localizations.dart';
 import 'shared/providers/locale_provider.dart';
 import 'shared/providers/theme_provider.dart';
+import 'package:flutter_mvvm_samples/core/utils/log/app_logger.dart';
 
 void startApp(BaseEnvModel env) {
+  // Initialize logger with environment
+  AppLogger.init(env.env);
+  AppLogger.instance
+      .info('App starting with environment: ${env.env.name}', tag: 'AppInit');
+
   return runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      AppLogger.instance.info('Widgets binding initialized', tag: 'AppInit');
       runApp(
         MultiProvider(
           providers: multipleProviders(env),
@@ -24,8 +31,12 @@ void startApp(BaseEnvModel env) {
       );
     },
     (error, stackTrace) {
-      print(error);
-      print(stackTrace);
+      AppLogger.instance.fatal(
+        'Uncaught error in app zone',
+        tag: 'AppInit',
+        error: error,
+        stackTrace: stackTrace,
+      );
     },
   );
 }

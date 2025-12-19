@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_mvvm_samples/core/env/base_env_model.dart';
 import 'package:flutter_mvvm_samples/core/network/api_error.dart';
+import 'package:flutter_mvvm_samples/core/utils/log/app_logger.dart';
 
 import 'dio_client.dart';
 
@@ -42,30 +43,57 @@ abstract class BaseApiClient {
     Options? options,
   }) async {
     try {
+      AppLogger.instance.api(
+        '${method.method} $path',
+        tag: 'API',
+        data: {'query': query, 'data': data},
+      );
+
       final Response res = await _dio.request(
         path,
         data: data,
         queryParameters: query,
         options: (options ?? Options()).copyWith(method: method.method),
       );
+
+      AppLogger.instance.api(
+        'Response: ${res.statusCode} $path',
+        tag: 'API',
+        data: res.data is Map<String, dynamic> ? res.data : null,
+      );
+
       if (res.data != null) {
         if (res.data is Map<String, dynamic>) {
           return ApiResult.success(fromJson(res.data));
         }
       }
-      return ApiResult.failure(
-        ApiError(
-            message: 'Unexpected response format', statusCode: res.statusCode),
+
+      final error = ApiError(
+          message: 'Unexpected response format', statusCode: res.statusCode);
+      AppLogger.instance.warning(
+        'Unexpected response format: $path',
+        tag: 'API',
       );
+      return ApiResult.failure(error);
     } on DioException catch (e) {
-      return ApiResult.failure(
-        ApiError(
-          message: _messageForDio(e),
-          statusCode: e.response?.statusCode,
-          type: e.type,
-        ),
+      final error = ApiError(
+        message: _messageForDio(e),
+        statusCode: e.response?.statusCode,
+        type: e.type,
       );
-    } catch (e) {
+      AppLogger.instance.networkError(
+        'API Error: ${method.method} $path',
+        tag: 'API',
+        error: e,
+      );
+      return ApiResult.failure(error);
+    } catch (e, stackTrace) {
+      AppLogger.instance.error(
+        'Unexpected error in API request: $path',
+        tag: 'API',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return ApiResult.failure(ApiError(message: e.toString()));
     }
   }
@@ -99,14 +127,24 @@ abstract class BaseApiClient {
             message: 'Unexpected response format', statusCode: res.statusCode),
       );
     } on DioException catch (e) {
-      return ApiResult.failure(
-        ApiError(
-          message: _messageForDio(e),
-          statusCode: e.response?.statusCode,
-          type: e.type,
-        ),
+      final error = ApiError(
+        message: _messageForDio(e),
+        statusCode: e.response?.statusCode,
+        type: e.type,
       );
-    } catch (e) {
+      AppLogger.instance.networkError(
+        'API List Error: ${method.method} $path',
+        tag: 'API',
+        error: e,
+      );
+      return ApiResult.failure(error);
+    } catch (e, stackTrace) {
+      AppLogger.instance.error(
+        'Unexpected error in API list request: $path',
+        tag: 'API',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return ApiResult.failure(ApiError(message: e.toString()));
     }
   }
