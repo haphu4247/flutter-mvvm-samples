@@ -26,8 +26,7 @@ class LocaleNotifier extends ChangeNotifier {
       }
     } catch (e) {
       // Handle error silently, use default locale
-      AppLogger.instance.warning('Error loading saved locale',
-          tag: 'LocaleProvider', error: e);
+      AppLogger.warning('Error loading saved locale', exception: e);
     }
   }
 
@@ -44,8 +43,7 @@ class LocaleNotifier extends ChangeNotifier {
         await _sharedPreferencesService.remove(PrefKey.locale);
       }
     } catch (e) {
-      AppLogger.instance
-          .warning('Error saving locale', tag: 'LocaleProvider', error: e);
+      AppLogger.warning('Error saving locale', exception: e);
     }
   }
 
@@ -56,8 +54,7 @@ class LocaleNotifier extends ChangeNotifier {
     try {
       await _sharedPreferencesService.remove(PrefKey.locale);
     } catch (e) {
-      AppLogger.instance
-          .warning('Error clearing locale', tag: 'LocaleProvider', error: e);
+      AppLogger.warning('Error clearing locale', exception: e);
     }
   }
 }

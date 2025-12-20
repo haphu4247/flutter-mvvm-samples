@@ -39,7 +39,7 @@ class PostsViewModel extends BaseViewModel {
   bool get isLoadingMore => _isLoadingMore;
   bool get hasMore => _hasMore;
   String? get errorMessage => _errorMessage;
-  static const int itemsPerPage = 10;
+  final int itemsPerPage = 10;
 
   /// Command: Load initial items
   Future<void> loadInitialItems() async {

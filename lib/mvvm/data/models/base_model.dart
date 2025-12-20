@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 /// Base class for all data models in the application.
 ///
 /// Provides a common interface for JSON serialization and deserialization.
@@ -27,13 +29,16 @@
 ///   }
 /// }
 /// ```
-abstract class BaseModel {
+abstract class BaseModel extends Equatable {
   const BaseModel();
 
   /// Converts the model instance to a JSON map.
   ///
   /// Subclasses must implement this method to serialize their specific fields.
   Map<String, dynamic> toJson();
+
+  @override
+  List<Object> get props => toJson().entries.toList();
 
   /// Helper method to safely parse an integer from JSON.
   /// Returns null if the value is null or cannot be converted.

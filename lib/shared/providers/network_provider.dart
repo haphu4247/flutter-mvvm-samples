@@ -23,8 +23,7 @@ class NetworkNotifier extends ChangeNotifier {
       final result = await _connectivity.checkConnectivity();
       _updateState(result.first);
     } catch (e) {
-      AppLogger.instance.warning('Error checking initial connectivity',
-          tag: 'NetworkProvider', error: e);
+      AppLogger.warning('Error checking initial connectivity', exception: e);
     }
 
     // Listen to connectivity changes

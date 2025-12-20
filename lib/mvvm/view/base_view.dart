@@ -20,8 +20,8 @@ class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
 
   @override
   void dispose() {
-    super.dispose();
     widget.vm.onDispose();
+    super.dispose();
   }
 
   @override

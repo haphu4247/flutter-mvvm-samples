@@ -42,8 +42,7 @@ class ThemeNotifier extends ChangeNotifier {
       }
     } catch (e) {
       // Handle error silently, use universal theme
-      AppLogger.instance
-          .warning('Error loading saved theme', tag: 'ThemeProvider', error: e);
+      AppLogger.warning('Error loading saved theme', exception: e);
     }
   }
 
@@ -55,8 +54,7 @@ class ThemeNotifier extends ChangeNotifier {
     try {
       await _sharedPreferencesService.setString(PrefKey.theme, themeMode.name);
     } catch (e) {
-      AppLogger.instance
-          .warning('Error saving theme', tag: 'ThemeProvider', error: e);
+      AppLogger.warning('Error saving theme', exception: e);
     }
   }
 
@@ -67,8 +65,7 @@ class ThemeNotifier extends ChangeNotifier {
     try {
       await _sharedPreferencesService.remove(PrefKey.theme);
     } catch (e) {
-      AppLogger.instance
-          .warning('Error clearing theme', tag: 'ThemeProvider', error: e);
+      AppLogger.warning('Error clearing theme', exception: e);
     }
   }
 }

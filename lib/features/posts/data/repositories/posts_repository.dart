@@ -17,7 +17,7 @@ class PostsRepository {
     final result = await _postsService.fetchPosts(page: page, limit: limit);
 
     if (result.isFailure) {
-      throw ApiError(message: result.error?.message ?? 'Failed to fetch posts');
+      return Future.error(ApiError(message: result.error?.message));
     }
 
     return result.data ?? [];

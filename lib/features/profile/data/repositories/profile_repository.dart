@@ -35,8 +35,7 @@ class ProfileRepository {
     final result = await _userService.getProfile();
 
     if (result.isFailure) {
-      throw ApiError(
-          message: result.error?.message ?? 'Failed to fetch profile');
+      return Future.error(ApiError(message: result.error?.message));
     }
 
     final profile = result.data;

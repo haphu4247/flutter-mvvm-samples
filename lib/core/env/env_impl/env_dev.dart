@@ -11,7 +11,7 @@ class EnvDev extends BaseEnvModel {
   String get apiHost => 'https://dummyjson.com';
 
   @override
-  FutureOr initConfig() {
+  Future initConfig() {
     return Future.value(null);
   }
 

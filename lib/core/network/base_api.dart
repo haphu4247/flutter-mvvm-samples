@@ -43,9 +43,8 @@ abstract class BaseApiClient {
     Options? options,
   }) async {
     try {
-      AppLogger.instance.api(
+      AppLogger.api(
         '${method.method} $path',
-        tag: 'API',
         data: {'query': query, 'data': data},
       );
 
@@ -56,9 +55,8 @@ abstract class BaseApiClient {
         options: (options ?? Options()).copyWith(method: method.method),
       );
 
-      AppLogger.instance.api(
+      AppLogger.api(
         'Response: ${res.statusCode} $path',
-        tag: 'API',
         data: res.data is Map<String, dynamic> ? res.data : null,
       );
 
@@ -70,9 +68,8 @@ abstract class BaseApiClient {
 
       final error = ApiError(
           message: 'Unexpected response format', statusCode: res.statusCode);
-      AppLogger.instance.warning(
+      AppLogger.warning(
         'Unexpected response format: $path',
-        tag: 'API',
       );
       return ApiResult.failure(error);
     } on DioException catch (e) {
@@ -81,17 +78,15 @@ abstract class BaseApiClient {
         statusCode: e.response?.statusCode,
         type: e.type,
       );
-      AppLogger.instance.networkError(
+      AppLogger.error(
         'API Error: ${method.method} $path',
-        tag: 'API',
-        error: e,
+        exception: e,
       );
       return ApiResult.failure(error);
     } catch (e, stackTrace) {
-      AppLogger.instance.error(
+      AppLogger.error(
         'Unexpected error in API request: $path',
-        tag: 'API',
-        error: e,
+        exception: e,
         stackTrace: stackTrace,
       );
       return ApiResult.failure(ApiError(message: e.toString()));
@@ -132,17 +127,15 @@ abstract class BaseApiClient {
         statusCode: e.response?.statusCode,
         type: e.type,
       );
-      AppLogger.instance.networkError(
+      AppLogger.error(
         'API List Error: ${method.method} $path',
-        tag: 'API',
-        error: e,
+        exception: e,
       );
       return ApiResult.failure(error);
     } catch (e, stackTrace) {
-      AppLogger.instance.error(
+      AppLogger.error(
         'Unexpected error in API list request: $path',
-        tag: 'API',
-        error: e,
+        exception: e,
         stackTrace: stackTrace,
       );
       return ApiResult.failure(ApiError(message: e.toString()));

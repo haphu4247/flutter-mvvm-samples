@@ -7,6 +7,7 @@ abstract class BaseViewModel {
   void onInit(
       {required void Function() onRefresh, required BuildContext context}) {}
 
+  /// Dispose automatically when the view is disposed
   void onDispose() {}
 
   void showLoading() {
