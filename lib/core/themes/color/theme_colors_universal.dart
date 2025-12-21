@@ -7,7 +7,8 @@ class UniversalThemeColors extends BaseTheme {
   String get themeName => 'Universal';
 
   @override
-  String get themeDescription => 'Modern theme with indigo colors and balanced design';
+  String get themeDescription =>
+      'Modern theme with indigo colors and balanced design';
 
   @override
   IconData get themeIcon => Icons.settings_system_daydream;

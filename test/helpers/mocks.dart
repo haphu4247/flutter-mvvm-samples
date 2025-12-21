@@ -9,4 +9,5 @@ import 'package:flutter_mvvm_samples/core/env/base_env_model.dart';
   SharedPreferencesService,
   BaseEnvModel,
 ])
+// ignore: unused_import
 import 'mocks.mocks.dart';

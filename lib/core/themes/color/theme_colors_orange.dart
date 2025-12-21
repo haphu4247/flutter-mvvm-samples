@@ -7,7 +7,8 @@ class OrangeThemeColors extends BaseTheme {
   String get themeName => 'Orange';
 
   @override
-  String get themeDescription => 'Vibrant orange theme with warm, energetic colors';
+  String get themeDescription =>
+      'Vibrant orange theme with warm, energetic colors';
 
   @override
   IconData get themeIcon => Icons.wb_sunny;
@@ -72,7 +73,8 @@ class OrangeThemeColors extends BaseTheme {
   Color get switchThumb => primary; // Orange switch thumb
 
   @override
-  Color get switchTrack => primary.withValues(alpha: 0.5); // Semi-transparent orange
+  Color get switchTrack =>
+      primary.withValues(alpha: 0.5); // Semi-transparent orange
 
   @override
   Color get inputBorder => const Color(0xFFFFCC80); // Light orange border
@@ -81,14 +83,17 @@ class OrangeThemeColors extends BaseTheme {
   Color get inputFocusedBorder => primary; // Orange focused border
 
   @override
-  Color get inputBackground => const Color(0xFFFFF8F5); // Very light orange background
+  Color get inputBackground =>
+      const Color(0xFFFFF8F5); // Very light orange background
 
   // Text colors
   @override
-  Color get textPrimary => const Color(0xFF2E2E2E); // Dark gray for primary text
+  Color get textPrimary =>
+      const Color(0xFF2E2E2E); // Dark gray for primary text
 
   @override
-  Color get textSecondary => const Color(0xFF666666); // Medium gray for secondary text
+  Color get textSecondary =>
+      const Color(0xFF666666); // Medium gray for secondary text
 
   @override
   Color get textCaption => const Color(0xFF999999); // Light gray for captions
@@ -98,7 +103,8 @@ class OrangeThemeColors extends BaseTheme {
   Color get navigationSelected => primary; // Orange for selected nav items
 
   @override
-  Color get navigationUnselected => const Color(0xFF999999); // Gray for unselected nav items
+  Color get navigationUnselected =>
+      const Color(0xFF999999); // Gray for unselected nav items
 
   @override
   Color get navigationBackground => surface; // White navigation background

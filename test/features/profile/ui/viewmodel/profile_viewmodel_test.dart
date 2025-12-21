@@ -106,11 +106,6 @@ void main() {
                 refreshToken: 'refresh',
               ));
 
-      var refreshCalled = 0;
-      viewModel.onRefresh = () {
-        refreshCalled++;
-      };
-
       // Start first load (but don't await to keep it "loading")
       viewModel.loadProfile();
 

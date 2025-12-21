@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,6 +6,7 @@ enum AppRoutePath {
   login('/login'),
   home('/home'),
   userProfile('/user_profile');
+
   final String path;
   const AppRoutePath(this.path);
 

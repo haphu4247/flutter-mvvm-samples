@@ -80,15 +80,8 @@ void main() {
       when(mockPostsRepository.fetchPosts(page: 1, limit: 10))
           .thenAnswer((_) async => posts);
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
-      await viewModel.loadInitialItems().whenComplete(() {
-        refreshCalled = false;
-      });
+      await viewModel.loadInitialItems();
 
       // Assert
       expect(viewModel.hasMore, isFalse);
@@ -108,15 +101,8 @@ void main() {
       when(mockPostsRepository.fetchPosts(page: 1, limit: 10))
           .thenAnswer((_) async => posts);
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
-      await viewModel.loadInitialItems().whenComplete(() {
-        refreshCalled = false;
-      });
+      await viewModel.loadInitialItems();
 
       // Assert
       expect(viewModel.hasMore, isTrue);

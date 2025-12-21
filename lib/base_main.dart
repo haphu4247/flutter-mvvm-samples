@@ -12,7 +12,6 @@ import 'package:flutter_mvvm_samples/core/translations/generated/app_localizatio
 import 'shared/providers/locale_provider.dart';
 import 'shared/providers/theme_provider.dart';
 import 'package:flutter_mvvm_samples/core/utils/log/app_logger.dart';
-import 'package:flutter_mvvm_samples/core/utils/log/app_logger.dart';
 
 void startApp(BaseEnvModel env) {
   // Initialize loggers with environment

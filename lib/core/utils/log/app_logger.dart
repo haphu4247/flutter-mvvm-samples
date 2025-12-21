@@ -1,5 +1,5 @@
-import 'package:talker/talker.dart';
 import 'package:flutter_mvvm_samples/core/env/env.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 /// Centralized Talker instance for the application
 /// Provides advanced error handling and logging capabilities

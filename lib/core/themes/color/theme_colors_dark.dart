@@ -7,7 +7,8 @@ class DarkThemeColors extends BaseTheme {
   String get themeName => 'Dark';
 
   @override
-  String get themeDescription => 'Dark theme with proper contrast for comfortable viewing';
+  String get themeDescription =>
+      'Dark theme with proper contrast for comfortable viewing';
 
   @override
   IconData get themeIcon => Icons.dark_mode;
