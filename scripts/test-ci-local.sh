@@ -116,7 +116,7 @@ build_android() {
 # Build for iOS (macOS only)
 # build_ios() {
 #     print_step "Building iOS app..."
-#     if flutter build ios --release --no-codesign; then
+#     if flutter build ios -t lib/main_dev.dart --release --no-codesign; then
 #         print_success "iOS build completed"
 #     else
 #         print_error "iOS build failed"
