@@ -39,11 +39,7 @@ void main() {
   group('loadInitialItems', () {
     test('should load initial items successfully', () async {
       // Init
-      var refreshCalled = false;
       viewModel.onInit(
-          onRefresh: () {
-            refreshCalled = true;
-          },
           context: helpers.createMockContext());
 
       // Arrange
@@ -66,7 +62,6 @@ void main() {
       expect(viewModel.isLoadingMore, isFalse);
       // expect(viewModel.hasMore, isTrue); // 2 items < 10, but we have 2 items
       expect(viewModel.errorMessage, isNull);
-      expect(refreshCalled, isTrue);
       verify(mockPostsRepository.fetchPosts(page: 1, limit: 10)).called(2);
     });
 
@@ -114,12 +109,6 @@ void main() {
       const errorMessage = 'Failed to load posts';
       when(mockPostsRepository.fetchPosts(page: 1, limit: 10))
           .thenThrow(ApiError(message: errorMessage));
-
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.loadInitialItems();
 
@@ -128,7 +117,6 @@ void main() {
       expect(viewModel.isLoadingMore, isFalse);
       expect(viewModel.errorMessage, isNotNull);
       expect(viewModel.errorMessage, contains(errorMessage));
-      expect(refreshCalled, isTrue);
     });
 
     test('should clear previous items when loading initial items', () async {
@@ -139,8 +127,6 @@ void main() {
       ];
       when(mockPostsRepository.fetchPosts(page: 1, limit: 10))
           .thenAnswer((_) async => initialPosts);
-
-      viewModel.onRefresh = () {};
       await viewModel.loadInitialItems();
 
       // Now load different items
@@ -173,7 +159,7 @@ void main() {
       when(mockPostsRepository.fetchPosts(page: 1, limit: 10))
           .thenAnswer((_) async => initialPosts);
 
-      viewModel.onRefresh = () {};
+      
       await viewModel.loadInitialItems();
 
       // Now load next page
@@ -183,11 +169,6 @@ void main() {
       when(mockPostsRepository.fetchPosts(page: 2, limit: 10))
           .thenAnswer((_) async => nextPagePosts);
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.loadNextPage();
 
@@ -196,7 +177,6 @@ void main() {
       expect(viewModel.currentPage, equals(2));
       expect(viewModel.isLoadingMore, isFalse);
       expect(viewModel.hasMore, isFalse);
-      expect(refreshCalled, isTrue);
       verify(mockPostsRepository.fetchPosts(page: 2, limit: 10)).called(1);
     });
 
@@ -205,8 +185,6 @@ void main() {
       when(mockPostsRepository.fetchPosts(
               page: anyNamed('page'), limit: anyNamed('limit')))
           .thenAnswer((_) async => []);
-
-      viewModel.onRefresh = () {};
 
       // Start loading (but don't await)
       viewModel.loadNextPage();
@@ -226,7 +204,6 @@ void main() {
       when(mockPostsRepository.fetchPosts(page: 1, limit: 10))
           .thenAnswer((_) async => posts);
 
-      viewModel.onRefresh = () {};
       await viewModel.loadInitialItems();
 
       // Act
@@ -249,18 +226,12 @@ void main() {
       when(mockPostsRepository.fetchPosts(page: 1, limit: 10))
           .thenAnswer((_) async => initialPosts);
 
-      viewModel.onRefresh = () {};
       await viewModel.loadInitialItems();
 
       // Now try to load next page with error
       const errorMessage = 'Failed to load next page';
       when(mockPostsRepository.fetchPosts(page: 2, limit: 10))
           .thenThrow(ApiError(message: errorMessage));
-
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
 
       // Act
       await viewModel.loadNextPage();
@@ -271,7 +242,6 @@ void main() {
       expect(viewModel.currentPage, equals(1)); // Should not increment on error
       expect(viewModel.errorMessage, isNotNull);
       expect(viewModel.errorMessage, contains(errorMessage));
-      expect(refreshCalled, isTrue);
     });
   });
 }

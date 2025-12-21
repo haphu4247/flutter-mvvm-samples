@@ -12,16 +12,25 @@ abstract class BaseView<T extends BaseViewModel> extends StatefulWidget {
 }
 
 class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
+
   @override
   void initState() {
     super.initState();
-    widget.vm.onInit(onRefresh: _onRefresh, context: context);
+    widget.vm.onInit(context: context);
+    // Set up event listener
+    _setupEventListener();
   }
 
   @override
   void dispose() {
     widget.vm.onDispose();
     super.dispose();
+  }
+
+  void _setupEventListener() {
+    widget.vm.refreshEvents.listen((event) {
+      setState(() {});
+    });
   }
 
   @override
@@ -31,10 +40,6 @@ class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
     } else {
       fn.call();
     }
-  }
-
-  void _onRefresh() {
-    setState(() {});
   }
 
   @override

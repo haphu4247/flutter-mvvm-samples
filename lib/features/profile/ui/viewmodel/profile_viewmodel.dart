@@ -19,12 +19,8 @@ class ProfileViewModel extends BaseViewModel {
   bool get hasProfile => _profile != null;
   String? get errorMessage => _errorMessage;
 
-  void Function()? onRefresh;
-
   @override
-  void onInit(
-      {required void Function() onRefresh, required BuildContext context}) {
-    this.onRefresh = onRefresh;
+  void onInit({required BuildContext context}) {
     loadProfile();
   }
 
@@ -34,7 +30,7 @@ class ProfileViewModel extends BaseViewModel {
 
     _isLoading = true;
     _errorMessage = null;
-    onRefresh?.call();
+    refreshUI();
 
     try {
       _profile = await _profileRepository.getProfile();
@@ -42,7 +38,7 @@ class ProfileViewModel extends BaseViewModel {
       _errorMessage = e.toString();
     } finally {
       _isLoading = false;
-      onRefresh?.call();
+      refreshUI();
     }
   }
 
@@ -50,7 +46,7 @@ class ProfileViewModel extends BaseViewModel {
   Future<void> refreshProfile() async {
     _isLoading = true;
     _errorMessage = null;
-    onRefresh?.call();
+    refreshUI();
 
     try {
       await _profileRepository.clearCache();
@@ -59,7 +55,7 @@ class ProfileViewModel extends BaseViewModel {
       _errorMessage = e.toString();
     } finally {
       _isLoading = false;
-      onRefresh?.call();
+      refreshUI();
     }
   }
 
@@ -67,6 +63,6 @@ class ProfileViewModel extends BaseViewModel {
   void clearProfile() {
     _profile = null;
     _errorMessage = null;
-    onRefresh?.call();
+    refreshUI();
   }
 }

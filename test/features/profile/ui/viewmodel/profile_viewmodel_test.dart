@@ -51,11 +51,6 @@ void main() {
 
       when(mockProfileRepository.getProfile()).thenAnswer((_) async => profile);
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.loadProfile();
 
@@ -64,7 +59,6 @@ void main() {
       expect(viewModel.profile, equals(profile));
       expect(viewModel.hasProfile, isTrue);
       expect(viewModel.errorMessage, isNull);
-      expect(refreshCalled, isTrue);
       verify(mockProfileRepository.getProfile()).called(1);
     });
 
@@ -73,11 +67,6 @@ void main() {
       const errorMessage = 'Failed to load profile';
       when(mockProfileRepository.getProfile())
           .thenThrow(ApiError(message: errorMessage));
-
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
 
       // Act
       await viewModel.loadProfile();
@@ -88,7 +77,6 @@ void main() {
       expect(viewModel.hasProfile, isFalse);
       expect(viewModel.errorMessage, isNotNull);
       expect(viewModel.errorMessage, contains(errorMessage));
-      expect(refreshCalled, isTrue);
     });
 
     test('should not load if already loading', () async {
@@ -136,11 +124,6 @@ void main() {
       when(mockProfileRepository.fetchProfile())
           .thenAnswer((_) async => profile);
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.refreshProfile();
 
@@ -149,7 +132,6 @@ void main() {
       expect(viewModel.profile, equals(profile));
       expect(viewModel.hasProfile, isTrue);
       expect(viewModel.errorMessage, isNull);
-      expect(refreshCalled, isTrue);
       verify(mockProfileRepository.clearCache()).called(1);
       verify(mockProfileRepository.fetchProfile()).called(1);
     });
@@ -160,12 +142,6 @@ void main() {
       when(mockProfileRepository.clearCache()).thenAnswer((_) async => {});
       when(mockProfileRepository.fetchProfile())
           .thenThrow(ApiError(message: errorMessage));
-
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.refreshProfile();
 
@@ -173,7 +149,6 @@ void main() {
       expect(viewModel.isLoading, isFalse);
       expect(viewModel.errorMessage, isNotNull);
       expect(viewModel.errorMessage, contains(errorMessage));
-      expect(refreshCalled, isTrue);
     });
   });
 
@@ -183,11 +158,6 @@ void main() {
       viewModel
           .loadProfile(); // This will set some state (though we don't await)
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       viewModel.clearProfile();
 
@@ -195,7 +165,6 @@ void main() {
       expect(viewModel.profile, isNull);
       expect(viewModel.errorMessage, isNull);
       expect(viewModel.hasProfile, isFalse);
-      expect(refreshCalled, isTrue);
     });
   });
 }

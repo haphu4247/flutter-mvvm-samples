@@ -25,19 +25,15 @@ class LoginViewModel extends BaseViewModel {
   bool get isLoggedIn => _authStatus?.isLoggedIn ?? false;
   LoginResponse? get user => _authStatus?.user;
 
-  void Function()? onRefresh;
-
   @override
-  void onInit(
-      {required void Function() onRefresh, required BuildContext context}) {
-    this.onRefresh = onRefresh;
+  void onInit({required BuildContext context}) {
     initialize();
   }
 
   /// Initialize and load current auth status
   Future<void> initialize() async {
     _isLoading = true;
-    onRefresh?.call();
+    refreshUI();
 
     try {
       _authStatus = await _authRepository.currentAuthStatus;
@@ -45,7 +41,7 @@ class LoginViewModel extends BaseViewModel {
       _errorMessage = e.toString();
     } finally {
       _isLoading = false;
-      onRefresh?.call();
+      refreshUI();
     }
   }
 
@@ -54,7 +50,7 @@ class LoginViewModel extends BaseViewModel {
       {required String username, required String password}) async {
     _isLoading = true;
     _errorMessage = null;
-    onRefresh?.call();
+    refreshUI();
 
     try {
       _authStatus =
@@ -62,11 +58,11 @@ class LoginViewModel extends BaseViewModel {
       // Status will update via stream listener
     } catch (e) {
       _errorMessage = e.toString();
-      onRefresh?.call();
+      refreshUI();
     } finally {
       if (_errorMessage != null) {
         _isLoading = false;
-        onRefresh?.call();
+        refreshUI();
       }
     }
   }
@@ -74,23 +70,23 @@ class LoginViewModel extends BaseViewModel {
   /// Command: Logout user
   Future<void> logout() async {
     _isLoading = true;
-    onRefresh?.call();
+    refreshUI();
 
     try {
       await _authRepository.logout();
     } catch (e) {
       _errorMessage = e.toString();
-      onRefresh?.call();
+      refreshUI();
     } finally {
       _isLoading = false;
-      onRefresh?.call();
+      refreshUI();
     }
   }
 
   /// Clear error message
   void clearError() {
     _errorMessage = null;
-    onRefresh?.call();
+    refreshUI();
   }
 
   @override

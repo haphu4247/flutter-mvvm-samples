@@ -1,14 +1,35 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 abstract class BaseViewModel {
-  const BaseViewModel();
+  BaseViewModel() : _refreshUIController = StreamController<String>.broadcast();
 
-  void onInit(
-      {required void Function() onRefresh, required BuildContext context}) {}
+  // Event stream for listeners
+  final StreamController<String> _refreshUIController;
+
+  void onInit({required BuildContext context}) {}
 
   /// Dispose automatically when the view is disposed
   void onDispose() {}
+
+  /// Stream of events that Views can listen to
+  Stream<String> get refreshEvents => _refreshUIController.stream;
+
+  /// Emit an event to listeners
+  ///
+  /// Example:
+
+  /// ```
+  void emitEvent(String event) {
+    if (!_refreshUIController.isClosed) {
+      _refreshUIController.add(event);
+    }
+  }
+
+  void refreshUI() {
+    emitEvent("refreshUI");
+  }
 
   void showLoading() {
     if (SmartDialog.checkExist(dialogTypes: {SmartAllDialogType.loading})) {

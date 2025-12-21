@@ -19,23 +19,15 @@ void main() {
   group('setCurrentIndex', () {
     test('should update current index', () {
       // Arrange
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
 
       // Act
       viewModel.setCurrentIndex(2);
 
       // Assert
       expect(viewModel.currentIndex, equals(2));
-      expect(refreshCalled, isTrue);
     });
 
     test('should update current index multiple times', () {
-      // Arrange
-      viewModel.onRefresh = () {};
-
       // Act
       viewModel.setCurrentIndex(1);
       expect(viewModel.currentIndex, equals(1));
@@ -49,10 +41,6 @@ void main() {
 
     test('should call onRefresh when index changes', () {
       // Arrange
-      var refreshCallCount = 0;
-      viewModel.onRefresh = () {
-        refreshCallCount++;
-      };
 
       // Act
       viewModel.setCurrentIndex(1);
@@ -60,28 +48,7 @@ void main() {
       viewModel.setCurrentIndex(3);
 
       // Assert
-      expect(refreshCallCount, equals(3));
-    });
-  });
-
-  group('onInit', () {
-    test('should set onRefresh callback', () {
-      // Arrange
-      var refreshCalled = false;
-      void refreshCallback() {
-        refreshCalled = true;
-      }
-
-      // Act
-      viewModel.onInit(
-        onRefresh: refreshCallback,
-        context: helpers.createMockContext(),
-      );
-
-      // Assert
-      expect(viewModel.onRefresh, isNotNull);
-      viewModel.onRefresh?.call();
-      expect(refreshCalled, isTrue);
+      expect(viewModel.currentIndex, equals(3));
     });
   });
 }

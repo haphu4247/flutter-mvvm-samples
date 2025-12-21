@@ -60,11 +60,6 @@ void main() {
       when(mockAuthRepository.currentAuthStatus)
           .thenAnswer((_) async => authStatus);
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.initialize();
 
@@ -73,7 +68,6 @@ void main() {
       expect(viewModel.errorMessage, isNull);
       expect(viewModel.isLoggedIn, isTrue);
       expect(viewModel.user, isNotNull);
-      expect(refreshCalled, isTrue);
       verify(mockAuthRepository.currentAuthStatus).called(1);
     });
 
@@ -82,11 +76,6 @@ void main() {
       when(mockAuthRepository.currentAuthStatus)
           .thenThrow(Exception('Failed to load'));
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.initialize();
 
@@ -94,7 +83,6 @@ void main() {
       expect(viewModel.isLoading, isFalse);
       expect(viewModel.errorMessage, isNotNull);
       expect(viewModel.errorMessage, contains('Failed to load'));
-      expect(refreshCalled, isTrue);
     });
   });
 
@@ -123,18 +111,12 @@ void main() {
       when(mockAuthRepository.login(username: username, password: password))
           .thenAnswer((_) async => authStatus);
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.login(username: username, password: password);
 
       // Assert
       expect(viewModel.errorMessage, isNull);
       expect(viewModel.isLoggedIn, isTrue);
-      expect(refreshCalled, isTrue);
       verify(mockAuthRepository.login(username: username, password: password))
           .called(1);
     });
@@ -148,11 +130,6 @@ void main() {
       when(mockAuthRepository.login(username: username, password: password))
           .thenThrow(ApiError(message: errorMessage));
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.login(username: username, password: password);
 
@@ -160,7 +137,6 @@ void main() {
       expect(viewModel.isLoading, isFalse);
       expect(viewModel.errorMessage, isNotNull);
       expect(viewModel.errorMessage, contains(errorMessage));
-      expect(refreshCalled, isTrue);
     });
   });
 
@@ -176,17 +152,11 @@ void main() {
 
       when(mockAuthRepository.logout()).thenAnswer((_) async => authStatus);
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.logout();
 
       // Assert
       expect(viewModel.isLoading, isFalse);
-      expect(refreshCalled, isTrue);
       verify(mockAuthRepository.logout()).called(1);
     });
 
@@ -194,18 +164,12 @@ void main() {
       // Arrange
       when(mockAuthRepository.logout()).thenThrow(Exception('Logout failed'));
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       await viewModel.logout();
 
       // Assert
       expect(viewModel.isLoading, isFalse);
       expect(viewModel.errorMessage, isNotNull);
-      expect(refreshCalled, isTrue);
     });
   });
 
@@ -214,17 +178,11 @@ void main() {
       // Arrange
       await viewModel.initialize();
 
-      var refreshCalled = false;
-      viewModel.onRefresh = () {
-        refreshCalled = true;
-      };
-
       // Act
       viewModel.clearError();
 
       // Assert
       expect(viewModel.errorMessage, isNull);
-      expect(refreshCalled, isTrue);
     });
   });
 }

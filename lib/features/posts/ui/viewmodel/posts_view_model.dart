@@ -10,14 +10,10 @@ class PostsViewModel extends BaseViewModel {
 
   final PostsRepository _postsRepository;
 
-  void Function()? onRefresh;
-
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
   @override
-  void onInit(
-      {required void Function() onRefresh, required BuildContext context}) {
-    this.onRefresh = onRefresh;
+  void onInit({required BuildContext context}) {
     loadInitialItems();
   }
 
@@ -48,7 +44,7 @@ class PostsViewModel extends BaseViewModel {
     _isLoadingMore = true;
     _currentPage = 1;
     _errorMessage = null;
-    onRefresh?.call();
+    refreshUI();
 
     try {
       final data = await _postsRepository.fetchPosts(
@@ -63,7 +59,7 @@ class PostsViewModel extends BaseViewModel {
       _errorMessage = e.toString();
     } finally {
       _isLoadingMore = false;
-      onRefresh?.call();
+      refreshUI();
     }
   }
 
@@ -73,7 +69,7 @@ class PostsViewModel extends BaseViewModel {
 
     _isLoadingMore = true;
     _errorMessage = null;
-    onRefresh?.call();
+    refreshUI();
 
     try {
       final nextPage = _currentPage + 1;
@@ -89,7 +85,7 @@ class PostsViewModel extends BaseViewModel {
       _errorMessage = e.toString();
     } finally {
       _isLoadingMore = false;
-      onRefresh?.call();
+      refreshUI();
     }
   }
 }
